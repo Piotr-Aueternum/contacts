@@ -10,11 +10,16 @@ import App from './components/App';
 const middleware = process.env.NODE_ENV === 'production'
   ? applyMiddleware()
   : applyMiddleware(logger);
+
+const { localStorage } = window;
+
+const data = localStorage.contactsList;
+
 const store = createStore(
   reducer,
+  data,
   middleware,
 );
-
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>

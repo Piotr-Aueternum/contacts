@@ -1,7 +1,5 @@
-import * as api from './constants/api';
-import Api from './api_client';
+const localStorage = window.localStorage;
 
-const url = api.url;
-export default function fetchData() {
-
+export default function setLocalStorage(payload) {
+  localStorage.setItem(payload.name, JSON.stringify(payload.data));
 }
