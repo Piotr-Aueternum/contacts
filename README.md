@@ -1,4 +1,4 @@
-# Finder project
+# Contacts list project
 Simple CRUD for contacts
 
 # Start
