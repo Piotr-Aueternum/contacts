@@ -13,8 +13,11 @@ export default function (state = initialState, action) {
       const contact = {};
       const data = {};
       const array = [...state.data];
-      array.sort((a, b) => a.id - b.id);
-      const lastIndex = array[array.length - 1].id;
+      let lastIndex = 0;
+      if (array.length > 0) {
+        array.sort((a, b) => a.id - b.id);
+        lastIndex = array[array.length - 1].id;
+      }
       action.payload.forEach((item) => {
         Object.assign(contact, { id: lastIndex + 1 });
         Object.assign(data, { [item.name]: item.value });
