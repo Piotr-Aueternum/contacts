@@ -1,14 +1,16 @@
+import * as c from '../constants/actions';
+
 export const create = payload => ({
-  type: c.UPDATE_FILTERS,
+  type: c.CREATE_CONTACT,
   payload,
 });
 
 export const update = payload => ({
-  type: c.UPDATE_FILTERS,
+  type: c.UPDATE_CONTACT,
   payload,
 });
 
 export const remove = payload => ({
-  type: c.UPDATE_FILTERS,
+  type: c.REMOVE_CONTACT,
   payload,
 });

@@ -1,19 +1,19 @@
 {
-  "name": "finder",
+  "name": "contacts",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --hot --config webpack.config.js",
-    "production": "webpack --config webpack.config.production.js"
+    "production": "webpack --config webpack.production.config.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Piotr-Aueternum/finder"
+    "url": "https://github.com/Piotr-Aueternum/contacts"
   },
   "keywords": [
-    "finder",
-    "search"
+    "contacts",
+    "crud"
   ],
   "author": "Piotr-Aueternum",
   "license": "MIT",

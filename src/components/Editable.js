@@ -14,6 +14,9 @@ export default class extends React.Component {
     };
     this.onChange = this.onChange.bind(this);
   }
+  componentWillReceiveProps(nextProps) {
+    this.setState({ children: nextProps.children });
+  }
   onChange(e) {
     this.props.onChange(e);
   }

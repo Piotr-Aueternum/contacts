@@ -1,36 +1,35 @@
 import * as c from '../constants/actions';
-
+import * as util from '../util';
+import { inputs, data as initialData } from '../initialState';
 
 const initialState = {
-  data: [{
-    _id: 1,
-    name: 'Jean',
-    surname: 'Paul',
-    email: 'jean@paul.com',
-    phone: '123456789',
-  }, {
-    _id: 2,
-    name: 'Alexandr',
-    surname: 'Pożarow',
-    email: 'alexandr.pozarov@nicecompany.ru',
-    phone: '987654321',
-  }],
+  inputs,
+  data: initialData,
 };
 
-
-export default function data(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
-    case c.FETCH_DATA: {
-      return { ...state, ...action.payload };
-    }
     case c.CREATE_CONTACT: {
-      return { ...state };
+      const contact = {};
+      const data = {};
+      const array = [...state.data];
+      array.sort((a, b) => a.id - b.id);
+      const lastIndex = array[array.length - 1].id;
+      action.payload.forEach((item) => {
+        Object.assign(contact, { id: lastIndex + 1 });
+        Object.assign(data, { [item.name]: item.value });
+      });
+      Object.assign(contact, { data });
+      return { ...state, data: [...state.data, contact] };
     }
     case c.REMOVE_CONTACT: {
-      return { ...state };
+      const array = util.removeElement(state.data, action.payload);
+      return { ...state, data: array };
     }
     case c.UPDATE_CONTACT: {
-      return { ...state };
+      const { data, id } = action.payload;
+      const array = util.updateElement(state.data, id, data);
+      return { ...state, data: array };
     }
     default:
       return state;

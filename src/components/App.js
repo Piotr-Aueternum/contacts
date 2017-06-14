@@ -1,122 +1,47 @@
 import React from 'react';
-import Form from './Form';
-import List from './List';
+import styled from 'styled-components';
+import ContactsList from '../containers/ContactsList';
+import CreateContact from '../containers/CreateContact';
+import media from '../style-utils';
 
-const data = [{
-  id: 1,
-  data: {
-    name: 'Jean',
-    surname: 'Paul',
-    email: 'jean@paul.com',
-    phone: '123456789',
-  },
-}, {
-  id: 2,
-  data: {
-    name: 'Alexandr',
-    surname: 'Pozarov',
-    email: 'alexandr.pozarov@nicecompany.ru',
-    phone: '987654321',
-  },
-}, {
-  id: 3,
-  data: {
-    name: 'Alexandr',
-    surname: 'Pozarov',
-    email: 'alexandr.pozarov@nicecompany.ru',
-    phone: '987654321',
-  },
-}, {
-  id: 4,
-  data: {
-    name: 'Alexandr',
-    surname: 'Pozarov',
-    email: 'alexandr.pozarov@nicecompany.ru',
-    phone: '987654321',
-  },
-}, {
-  id: 5,
-  data: {
-    name: 'Jean',
-    surname: 'Paul',
-    email: 'jean@paul.com',
-    phone: '123456789',
-  },
-}, {
-  id: 6,
-  data: {
-    name: 'Alexandr',
-    surname: 'Pozarov',
-    email: 'alexandr.pozarov@nicecompany.ru',
-    phone: '987654321',
-  },
-}, {
-  id: 7,
-  data: {
-    name: 'Alexandr',
-    surname: 'Pozarov',
-    email: 'alexandr.pozarov@nicecompany.ru',
-    phone: '987654321',
-  },
-}, {
-  id: 8,
-  data: {
-    name: 'Alexandr',
-    surname: 'Pozarov',
-    email: 'alexandr.pozarov@nicecompany.ru',
-    phone: '987654321',
-  },
-}, {
-  id: 9,
-  data: {
-    name: 'Alexandr',
-    surname: 'Pozarov',
-    email: 'alexandr.pozarov@nicecompany.ru',
-    phone: '987654321',
-  },
-}, {
-  id: 10,
-  data: {
-    name: 'Alexandr',
-    surname: 'Pozarov',
-    email: 'alexandr.pozarov@nicecompany.ru',
-    phone: '987654321',
-  },
-}, {
-  id: 11,
-  data: {
-    name: 'Alexandr',
-    surname: 'Pozarov',
-    email: 'alexandr.pozarov@nicecompany.ru',
-    phone: '987654321',
-  },
-}, {
-  id: 12,
-  data: {
-    name: 'Alexandr',
-    surname: 'Pozarov',
-    email: 'alexandr.pozarov@nicecompany.ru',
-    phone: '987654321',
-  },
-}];
+const Container = styled.div`
+  margin: 0 auto;
+  max-width: 470px;
+  width: 100%;
+  padding: 60px 15px;
+  display: flex;
+  flex-direction: column;
+  background-color: #efefef;
+  ${media.tablet`
+    padding: 90px 15px 60px;
+  `}
+`;
 
-const form = [{}, {}];
+const ContactBar = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  background-color: #eee;
+  border-bottom: 1px solid #aaa;
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  ${media.tablet`
+    padding: 15px 10px 5px 10px;
+  `}
+`;
 
 export default () => (
   <main>
-    <Form
-      data={form}
-      onSubmit={() => {}}
-    />
-    <List
-      pagination={10}
-      items={data}
-      onEdit={(e, id) => {
-        console.log(e, id);
-      }}
-      onDelete={(id) => {
-        console.log(id);
-      }}
-    />
+    <ContactBar>
+      <CreateContact />
+    </ContactBar>
+    <Container>
+      <ContactsList
+        pagination={10}
+      />
+    </Container>
   </main>
 );
